@@ -9,6 +9,7 @@ const BaiDuYun = require('./BaiduYun')
 //   config.EndPoint
 // )
 let cdnNameSource = new Set()
+const slash = '/'
 class UploadCdnWebpackPlugin {
   constructor(cdnExternals, config) {
     this.cdnExternals = cdnExternals
@@ -25,8 +26,9 @@ class UploadCdnWebpackPlugin {
       (compilation, compilationParams) => {
         console.log(compilationParams)
         const webpackExternals = compiler.options.externals
-        const publicPath = compilation.options.output.publicPath
+        let publicPath = compilation.options.output.publicPath
         // TODO: 校验https以及查询是否存在
+        if (publicPath.slice(-1) !== slash) publicPath += '/'
         // console.log(compilation.options.output.publicPath)
         Object.keys(webpackExternals).forEach(async (packageName) => {
           try {
