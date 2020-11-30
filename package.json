@@ -1,7 +1,7 @@
 {
-  "name": "webpack-cdn-plugin",
-  "version": "0.0.1",
-  "description": "upload file to cdn",
+  "name": "externals-cdn-webpack-plugin",
+  "version": "0.0.2",
+  "description": "upload file to cdn what is had by baidu",
   "main": "cdn.js",
   "scripts": {
     "test": "webpack"
@@ -19,7 +19,7 @@
     "webpack-cli": "^4.2.0"
   },
   "files": [
-    "./cdn.js",
-    "./BaiduYun.js"
+    "cdn.js",
+    "BaiduYun.js"
   ]
 }
