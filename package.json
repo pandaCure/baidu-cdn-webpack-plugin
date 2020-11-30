@@ -1,0 +1,25 @@
+{
+  "name": "webpack-cdn-plugin",
+  "version": "0.0.1",
+  "description": "upload file to cdn",
+  "main": "cdn.js",
+  "scripts": {
+    "test": "webpack"
+  },
+  "keywords": ["cdn"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@baiducloud/sdk": "^1.0.0-rc.25",
+    "html-webpack-plugin": "^4.5.0",
+    "lodash": "^4.17.20",
+    "webpack": "^5.7.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.2.0"
+  },
+  "files": [
+    "./cdn.js",
+    "./BaiduYun.js"
+  ]
+}
