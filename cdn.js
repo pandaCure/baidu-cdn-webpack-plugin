@@ -45,9 +45,9 @@ class UploadCdnWebpackPlugin {
               packageInfo.relativePath
             )
             const name = `${packageInfo.name}-${packageInfo.version}-${packageInfo.relativePath}`
-            console.log(`${publicPath}/${name}`)
-            cdnNameSource.add(`${publicPath}/${name}`)
-            if (!cdnNameSource.has(`${publicPath}/${name}`)) {
+            console.log(`${publicPath}${name}`)
+            cdnNameSource.add(`${publicPath}${name}`)
+            if (!cdnNameSource.has(`${publicPath}${name}`)) {
               await this.uploadTool.uploadMultipartFile(
                 this.config.bucket,
                 packagePath,
