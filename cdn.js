@@ -26,6 +26,7 @@ class UploadCdnWebpackPlugin {
         console.log(compilationParams)
         const webpackExternals = compiler.options.externals
         const publicPath = compilation.options.output.publicPath
+        // TODO: 校验https以及查询是否存在
         // console.log(compilation.options.output.publicPath)
         Object.keys(webpackExternals).forEach(async (packageName) => {
           try {
@@ -44,12 +45,14 @@ class UploadCdnWebpackPlugin {
             const name = `${packageInfo.name}-${packageInfo.version}-${packageInfo.relativePath}`
             console.log(`${publicPath}/${name}`)
             cdnNameSource.add(`${publicPath}/${name}`)
-            await this.uploadTool.uploadMultipartFile(
-              this.config.bucket,
-              packagePath,
-              name,
-              fs.statSync(packagePath).size
-            )
+            if (!cdnNameSource.has(`${publicPath}/${name}`)) {
+              await this.uploadTool.uploadMultipartFile(
+                this.config.bucket,
+                packagePath,
+                name,
+                fs.statSync(packagePath).size
+              )
+            }
           } catch (error) {
             console.error(error)
           }
